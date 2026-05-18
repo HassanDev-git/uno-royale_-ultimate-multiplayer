@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNO Royale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Outfit', sans-serif;
+        background: #1a1a1a;
+        overflow: hidden;
+        user-select: none;
+      }
+      .font-uno {
+        font-family: 'Fredoka One', cursive;
+      }
+      
+      /* Global Custom Scrollbar */
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; border: 2px solid #1a1a1a; }
+      ::-webkit-scrollbar-thumb:hover { background: #666; }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Custom scrollbar for containers - Royale Red Theme */
+      .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 10px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(220, 38, 38, 0.4); border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(220, 38, 38, 0.8); }
+
+      /* Animated Themes */
+      @keyframes neon-pulse {
+        0% { box-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff; }
+        50% { box-shadow: 0 0 20px #00f2ff, 0 0 40px #00f2ff; }
+        100% { box-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff; }
+      }
+      .theme-neon { animation: neon-pulse 2s infinite; }
+
+      @keyframes matrix-scroll {
+        from { background-position: 0 0; }
+        to { background-position: 0 100%; }
+      }
+      .theme-matrix {
+        background-image: linear-gradient(180deg, transparent 0%, #00ff0011 50%, transparent 100%);
+        background-size: 100% 200%;
+        animation: matrix-scroll 3s linear infinite;
+        background-color: #001100;
+      }
+
+      @keyframes holo-shine {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      .theme-gold {
+        background: linear-gradient(90deg, #ffd700, #fff7ad, #ffd700, #ffae00, #ffd700);
+        background-size: 400% 100%;
+        animation: holo-shine 5s linear infinite;
+      }
+
+      @keyframes space-drift {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+      }
+      .theme-bg-space {
+        background-color: #0b0e1a;
+        background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                          radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+        background-size: 550px 550px, 350px 350px;
+        animation: space-drift 60s linear infinite;
+      }
+
+      .theme-bg-casino {
+        background-color: #004d00;
+        background-image: radial-gradient(#006600 15%, transparent 16%),
+                          radial-gradient(#006600 15%, transparent 16%);
+        background-size: 60px 60px;
+        background-position: 0 0, 30px 30px;
+        box-shadow: inset 0 0 150px rgba(0,0,0,0.5);
+      }
+
+      .theme-bg-cyber {
+        background-color: #050505;
+        background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+        background-size: 50px 50px;
+        position: relative;
+      }
+      .theme-bg-cyber::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+        pointer-events: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "canvas-confetti": "https://esm.sh/canvas-confetti@1.9.4",
+    "lucide-react": "https://esm.sh/lucide-react@0.454.0?deps=react@19.0.0",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.17?deps=react@19.0.0",
+    "howler": "https://esm.sh/howler@2.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@1.38.0",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js",
+    "firebase/database": "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "firebase/": "https://esm.sh/firebase@^12.8.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
